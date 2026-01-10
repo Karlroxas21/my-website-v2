@@ -1,6 +1,6 @@
-import { useRef } from "react";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
+import { useRef } from 'react';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
 
 interface WeightRange {
     min: number;
@@ -17,40 +17,32 @@ const FONT_WEIGHTS: FontWeightsConfig = {
 
 const renderText = (text: string, className?: string, baseWeight = 400) => {
     return [...text].map((char, idx) => (
-        <span
-            key={idx}
-            className={className}
-            style={{ fontVariationSettings: `'wght' ${baseWeight}` }}
-        >
-            {char === " " ? "\u00A0" : char}
+        <span key={idx} className={className} style={{ fontVariationSettings: `'wght' ${baseWeight}` }}>
+            {char === ' ' ? '\u00A0' : char}
         </span>
     ));
 };
 
 const setupTextHover = (container: HTMLElement | null, type: string) => {
-    if (!container) return () => { };
+    if (!container) return () => {};
 
-    const letters = container.querySelectorAll("span");
+    const letters = container.querySelectorAll('span');
     const { min, max, default: base } = FONT_WEIGHTS[type];
 
-    const animateLetters = (
-        letter: HTMLSpanElement,
-        weight: number,
-        duration = 0.25
-    ) => {
+    const animateLetters = (letter: HTMLSpanElement, weight: number, duration = 0.25) => {
         return gsap.to(letter, {
             duration,
-            ease: "power2.out",
-            "fontVariationSettings": `'wght' ${weight}`,
+            ease: 'power2.out',
+            fontVariationSettings: `'wght' ${weight}`,
         });
     };
 
     const handleMouseMove = (e: MouseEvent) => {
-        console.log("MOUSE MOVE!");
+        console.log('MOUSE MOVE!');
         const { left } = container.getBoundingClientRect();
         const mouseX = e.clientX - left;
 
-        letters.forEach((letter) => {
+        letters.forEach(letter => {
             const { left: l, width: w } = letter.getBoundingClientRect();
             const distance = Math.abs(mouseX - (l - left + w / 2));
             const intensity = Math.exp(-(distance ** 2) / 1000);
@@ -60,17 +52,16 @@ const setupTextHover = (container: HTMLElement | null, type: string) => {
     };
 
     const handleMouseLeave = () => {
-        letters.forEach((letter) => animateLetters(letter, base, 0.3));
-    }
+        letters.forEach(letter => animateLetters(letter, base, 0.3));
+    };
 
-    container.addEventListener("mousemove", handleMouseMove);
-    container.addEventListener("mouseleave", handleMouseLeave);
+    container.addEventListener('mousemove', handleMouseMove);
+    container.addEventListener('mouseleave', handleMouseLeave);
 
     return () => {
-        container.removeEventListener("mousemove", handleMouseMove);
-        container.removeEventListener("mouseleave", handleMouseLeave);
-
-    }
+        container.removeEventListener('mousemove', handleMouseMove);
+        container.removeEventListener('mouseleave', handleMouseLeave);
+    };
 };
 
 const Welcome = () => {
@@ -78,8 +69,8 @@ const Welcome = () => {
     const subtitleRef = useRef(null);
 
     useGSAP(() => {
-        const titleCleanUp = setupTextHover(titleRef.current, "title");
-        const subTitleCleanUp = setupTextHover(subtitleRef.current, "subtitle");
+        const titleCleanUp = setupTextHover(titleRef.current, 'title');
+        const subTitleCleanUp = setupTextHover(subtitleRef.current, 'subtitle');
 
         return () => {
             if (!titleCleanUp || !subTitleCleanUp) return;
@@ -91,15 +82,9 @@ const Welcome = () => {
 
     return (
         <section id="welcome">
-            <p ref={subtitleRef}>
-                {renderText(
-                    "Hi! I am Karl. Welcome to my",
-                    "text-3xl font-georama",
-                    100
-                )}
-            </p>
+            <p ref={subtitleRef}>{renderText('Hi! I am Karl. Welcome to my', 'text-3xl font-georama', 100)}</p>
             <h1 ref={titleRef} className="mt-7">
-                {renderText("website", "text-9xl italic font-georama")}
+                {renderText('website', 'text-9xl italic font-georama')}
             </h1>
 
             <div className="small-screen">

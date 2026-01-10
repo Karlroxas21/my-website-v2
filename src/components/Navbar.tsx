@@ -1,5 +1,5 @@
-import { navIcons, navLinks } from "@constants/index"
-import dayjs from "dayjs";
+import { navIcons, navLinks } from '@constants/index';
+import dayjs from 'dayjs';
 
 const Navbar = () => {
     return (
@@ -27,7 +27,7 @@ const Navbar = () => {
                 <time>{dayjs().format('ddd MMM D h:mm A')}</time>
             </div>
         </nav>
-    )
-}
+    );
+};
 
-export default Navbar
+export default Navbar;
