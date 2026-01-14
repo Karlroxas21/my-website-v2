@@ -1,4 +1,5 @@
 import { dockApps } from '@constants/index';
+import useWindowStore from '@store/window';
 import { useRef } from 'react';
 import { Tooltip } from 'react-tooltip';
 
@@ -17,11 +18,22 @@ interface DockApps {
     canOpen: boolean;
 }
 const Dock = () => {
+    const { openWindow, closeWindow, windows } = useWindowStore();
     const dockRef = useRef(null);
 
-    // const toggleApp = ({ id, canOpen }: Pick<DockApps, 'id' | 'canOpen'>) => {
+    const toggleApp = ({ id, canOpen }: Pick<DockApps, 'id' | 'canOpen'>) => {
+        console.log("OPENNNNEEDDD")
+        if (canOpen) {
+            const window = windows[id];
+            if (!window) return;
+            if (window.isOpen) {
+                closeWindow(id);
+            } else {
+                openWindow(id, null);
+            }
+        }
 
-    // }
+    }
 
     return (
         <section id="dock">

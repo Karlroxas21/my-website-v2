@@ -102,15 +102,15 @@ body {
         @apply flex gap-2;
 
         .close {
-            @apply size-3.5 rounded-full bg-[#ff6157] cursor-pointer;
+            @apply size-3.5 rounded-full bg-[#2d2c32]/60 cursor-pointer;
         }
 
         .minimize {
-            @apply size-3.5 rounded-full bg-[#ffc030];
+            @apply size-3.5 rounded-full bg-[#2d2c32]/60;
         }
 
         .maximize {
-            @apply size-3.5 rounded-full bg-[#2acb42];
+            @apply size-3.5 rounded-full bg-[#2d2c32]/60    ;
         }
     }
 
