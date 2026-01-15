@@ -1,5 +1,6 @@
 import Dock from '@components/Dock';
 import Navbar from '@components/Navbar';
+import Safari from '@windows/Safari';
 import Welcome from '@components/Welcome';
 import Terminal from '@windows/Terminal';
 import gsap from 'gsap';
@@ -14,6 +15,7 @@ const App = () => {
             <Dock />
 
             <Terminal />
+            <Safari />
         </main>
     );
 };

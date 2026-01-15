@@ -39,7 +39,7 @@ const Dock = () => {
         <section id="dock">
             <div ref={dockRef} className="dock-container">
                 {dockApps.map(({ id, name, icon, canOpen }) => (
-                    <div key={id} className="relative flex justify-center">
+                    <div key={id} className="relative flex justify-center items-center">
                         <button
                             type="button"
                             className="dock-icon"
@@ -49,7 +49,7 @@ const Dock = () => {
                             data-tooltip-delay-show={150}
                             disabled={!canOpen}
                             onClick={() => toggleApp({ id, canOpen })}>
-                            <img src={icon} alt={name} loading={'lazy'} className={canOpen ? '' : 'opacity-60'} />
+                            <img src={icon} alt={name} loading={'lazy'} className={canOpen ? '' : 'opacity-60'} width={62} height={62}/>
                         </button>
                     </div>
                 ))}
