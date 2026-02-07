@@ -1,6 +1,7 @@
 import WindowWrapper from '@hoc/WindowWrapper';
 import WindowControls from '../components/WindowControls';
-import { ArrowLeft, ArrowRight, ChevronDown, PanelLeft, RotateCw, Shield, File, Star, Menu } from 'lucide-react';
+import { ArrowLeft, ArrowRight, ChevronDown, PanelLeft, RotateCw, Shield, File, Star, Menu, MoveRight } from 'lucide-react';
+import { blogPosts } from '@constants/index';
 
 const Firefox = () => {
     return (
@@ -48,8 +49,24 @@ const Firefox = () => {
             </div>
             {/* Body */}
             <div className='bg-[#1f1e25] text-white'>
-                <div className='p-5'>
-                    <p>My Blogs</p>
+                <div className='blog'>
+                    <h2>My Blogs</h2>
+
+                    <div className='space-y-8'>
+                        {blogPosts.map(({id, image, title, date, link}) => (
+                            <div key={id} className='blog-post'>
+                                <div className='col-span-2'>
+                                    <img src={image} alt={title}/>
+                                </div>
+
+                                <div className="content">
+                                    <p>{date}</p>
+                                    <h3>{title}</h3>
+                                    <a href={link} target='_blank' rel="noopener noreferrer">Checkout the full post <MoveRight className='icon-hover'/></a>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
                 </div>
                 
             </div>

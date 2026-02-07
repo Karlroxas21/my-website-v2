@@ -62,6 +62,39 @@ body {
 }
 
 @layer components {
+
+    .blog {
+        @apply p-10 max-w-3xl mx-auto;
+
+        h2 {
+            @apply text-xl font-bold text-pink-600 mb-10;
+        }
+    }
+
+    .blog-post {
+        @apply grid grid-cols-12 space-x-5;
+
+        img {
+            @apply size-full rounded-md object-cover;
+        }
+
+        .content {
+            @apply col-span-10 space-y-3;
+
+            p {
+                @apply text-xs;
+            }
+
+            h3 {
+                @apply font-semibold text-base;
+            }
+
+            a {
+                @apply text-blue-600 text-xs hover:underline flex items-center gap-3;
+            }
+        }
+    }
+
     .icon {
         @apply p-1 hover:bg-gray-200 rounded hover:cursor-default;
     }
@@ -110,7 +143,7 @@ body {
         }
 
         .maximize {
-            @apply size-3.5 rounded-full bg-[#2d2c32]/60    ;
+            @apply size-3.5 rounded-full bg-[#2d2c32]/60;
         }
     }
 
@@ -124,7 +157,7 @@ body {
     }
 
     #terminal {
-        @apply w-xl absolute top-32 left-1/12 bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
+        @apply w-xl absolute top-32 left-1/12 bg-[#300a24] text-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
 
         h2 {
             @apply font-bold text-sm text-center w-full;

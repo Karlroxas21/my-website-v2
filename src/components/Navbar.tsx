@@ -5,7 +5,6 @@ const Navbar = () => {
     return (
         <nav>
             <div>
-                <img src="/public/images/logo.svg" />
                 <p className="font-bold">Karl's Website</p>
 
                 <ul>
