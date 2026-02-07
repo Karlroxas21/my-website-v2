@@ -5,6 +5,7 @@ import Welcome from '@components/Welcome';
 import Terminal from '@windows/Terminal';
 import gsap from 'gsap';
 import { Draggable } from 'gsap/Draggable';
+import Resume from '@windows/Resume';
 
 gsap.registerPlugin(Draggable);
 
@@ -17,6 +18,7 @@ const App = () => {
 
             <Terminal />
             <Firefox />
+            <Resume />
         </main>
     );
 };
